@@ -1,0 +1,59 @@
+# ---------------------------------------------------------------------
+# RenewFit.jl
+# ---------------------------------------------------------------------
+
+# Julia environments
+# Manifest.toml is NOT committed for a package: it pins exact versions of
+# every transitive dependency, which is what an application wants and what a
+# library must avoid -- committing it forces your resolved versions on anyone
+# who installs RenewFit. Project.toml with compat bounds is the contract.
+Manifest.toml
+**/Manifest.toml
+
+# Julia build artifacts
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+/docs/build/
+/docs/site/
+deps/deps.jl
+deps/build.log
+LocalPreferences.toml
+
+# ---------------------------------------------------------------------
+# Analysis output
+#
+# Everything under output/ is regenerable by re-running the scripts, and it
+# accumulates fast: PNGs and per-horizon CSVs for every dataset x analysis.
+# The settings.txt written alongside each run records sigma_R, damp and the
+# generation interval, so a result can be reproduced from the config rather
+# than retrieved from git.
+# ---------------------------------------------------------------------
+output/
+!output/.gitkeep
+
+# ---------------------------------------------------------------------
+# Input data
+#
+# The four series shipped here are small (< 100 KB total) and come from the
+# public SubEpiPredict toolbox, so they ARE committed -- the examples do not
+# run without them, and a toolbox whose examples cannot run is hard to trust.
+# Larger or non-public data added later should be excluded instead:
+#
+#   input/*.csv
+#   input/private/
+# ---------------------------------------------------------------------
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Scratch
+scratch/
+tmp/
+*.log
